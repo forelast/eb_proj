@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class MenuController {
 
     private final MenuService menuService;
+    private static final String HEALTH_MESSAGE = "eb_pro is online and healthy";
 
     @Autowired
     public MenuController(MenuService menuService) {
@@ -19,7 +20,7 @@ public class MenuController {
 
     @GetMapping("health")
     public String healthCheck() {
-        return "eb_pro is online and healthy";
+        return HEALTH_MESSAGE;
     }
 
     @GetMapping("menus/{menuCode}")
