@@ -36,7 +36,7 @@ class MenuControllerTest {
     /* 메뉴 코드로 특정 메뉴를 조회하는 API 테스트 */
     @DisplayName("4번 메뉴확인")
     @Test
-    public void findMenyByCodeTest() throws Exception {
+    public void findMenuByCodeTest() throws Exception {
         mockMvc.perform(get("/menus/4"))              // /menus/4 엔드포인트로 GET 요청
                 .andExpect(status().isOk())            // HTTP 상태코드 200 OK 확인
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))    // 응답이 JSON 형식인지 확인
