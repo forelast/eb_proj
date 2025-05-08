@@ -7,7 +7,9 @@ plugins {
 group = 'com.ohgiraffers'
 version = '0.0.1-SNAPSHOT'
 
-// 하나의 jar 파일만 생성
+// githubactions 상에서 필요한 하나의 jar 파일만 생성
+// 일반 JAR 파일의 생성을 비활성화하고, Spring Boot 플러그인에 의해
+// 생성되는 실행 가능한 JAR 파일만 생성
 jar {
     enabled = false
 }
