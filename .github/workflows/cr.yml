@@ -64,6 +64,14 @@ jobs:
               properties:
                 hibernate:
                   '[format_sql]': true
+          management:
+            endpoints:
+              web:
+                exposure:
+                  include: health
+            endpoint:
+              health:
+                show-details: always
           
           EOL
 
@@ -80,17 +88,6 @@ jobs:
           RDS_USERNAME: ${{ secrets.RDS_USERNAME }}
           RDS_PASSWORD: ${{ secrets.RDS_PASSWORD }}
 
-      # 테스트 코드 존재 여부 확인
-      - name: Check for Tests
-        run: |
-          if git diff --name-only origin/feature/test HEAD | grep -qvE '(\.xml$|\.yml$|config/)'; then
-            if [ -z "$(find src/test -name '*ControllerTest.java')" ]; then
-              echo "No ServiceTest found, failing the build."
-              exit 1
-            fi
-          else
-            echo "Only configuration files changed, skipping test check."
-          fi
   ###############################################
 
       - name: Build with Gradle

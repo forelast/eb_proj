@@ -19,12 +19,12 @@ public class MenuController {
         this.menuService = menuService;
     }
 
-    @GetMapping("health")
+    @GetMapping("/health")
     public String healthCheck() {
         return HEALTH_MESSAGE;
     }
 
-    @GetMapping("menus/{menuCode}")
+    @GetMapping("/menus/{menuCode}")
     public MenuDTO findMenuByMenuCode(@PathVariable("menuCode") int menuCode) {
         return menuService.findMenuByMenuCode(menuCode);
     }
