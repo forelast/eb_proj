@@ -6,16 +6,13 @@ permissions:
   pull-requests: write
 
 # PR 이벤트 관련해서 워크플로우 실행
-# opened: 새로운 PR이 생성되었을 때
-# reopened: 이미 존재하는 PR이 다시 열렸을 때
-# synchronize: 브랜치가 커밋으로 업데이트되었을 때
 on:
   pull_request:
     types: [opened, reopened, synchronize]
 
 # 워크플로우 실행 작업 정의
 jobs:
-  build-and-deploy:
+  test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -138,7 +135,7 @@ jobs:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           application_name: camp-b
-          environment_name: Camp-b-env-g
+          environment_name: Camp-b-env
           version_label: github-action-${{steps.current-time.outputs.formattedTime}}
           region: ap-northeast-2
           deployment_package: deploy/deploy.zip
