@@ -12,19 +12,19 @@ public class MenuController {
 
     private final MenuService menuService;
 
-    private static final String HEALTH_MESSAGE = "eb_pro is online and ! feature/test2";
+    private static final String HEALTH_MESSAGE = "eb_pro is online and green2!";
 
     @Autowired
     public MenuController(MenuService menuService) {
         this.menuService = menuService;
     }
 
-    @GetMapping("health")
+    @GetMapping("/health")
     public String healthCheck() {
         return HEALTH_MESSAGE;
     }
 
-    @GetMapping("menus/{menuCode}")
+    @GetMapping("/menus/{menuCode}")
     public MenuDTO findMenuByMenuCode(@PathVariable("menuCode") int menuCode) {
         return menuService.findMenuByMenuCode(menuCode);
     }

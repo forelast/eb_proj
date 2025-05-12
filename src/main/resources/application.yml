@@ -2,4 +2,4 @@
 # 프로필별 설정이 가능하며 이를 오버라이드 한다.
 spring:
   profiles:
-    active: test
+    active: dev
