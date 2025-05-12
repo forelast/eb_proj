@@ -15,7 +15,7 @@ on:
 
 # 워크플로우 실행 작업 정의
 jobs:
-  build-and-test:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -101,12 +101,6 @@ jobs:
         run: echo "CurrentTime=${{steps.current-time.outputs.formattedTime}}"
         shell: bash
 
-  code-review:
-    runs-on: ubuntu-latest
-    needs: build-and-test  # 빌드 성공 후 실행
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
       - name: ChatGPT codeReviewer
         uses: anc95/ChatGPT-CodeReview@main
         env:
@@ -144,7 +138,7 @@ jobs:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           application_name: camp-b
-          environment_name: Camp-b-env
+          environment_name: Camp-b-env-g
           version_label: github-action-${{steps.current-time.outputs.formattedTime}}
           region: ap-northeast-2
           deployment_package: deploy/deploy.zip
