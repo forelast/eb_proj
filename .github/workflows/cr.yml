@@ -6,6 +6,9 @@ permissions:
   pull-requests: write
 
 # PR 이벤트 관련해서 워크플로우 실행
+# opened: 새로운 PR이 생성되었을 때
+# reopened: 이미 존재하는 PR이 다시 열렸을 때
+# synchronize: 브랜치가 커밋으로 업데이트되었을 때
 on:
   pull_request:
     types: [opened, reopened, synchronize]

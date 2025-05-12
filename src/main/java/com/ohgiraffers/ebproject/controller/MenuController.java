@@ -12,7 +12,7 @@ public class MenuController {
 
     private final MenuService menuService;
 
-    private static final String HEALTH_MESSAGE = "eb_pro is online and ! blue";
+    private static final String HEALTH_MESSAGE = "eb_pro is online and blue!";
 
     @Autowired
     public MenuController(MenuService menuService) {
